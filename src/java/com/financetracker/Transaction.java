@@ -1,9 +1,10 @@
-package financeTracker;
+package com.financetracker;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Transaction {
+    private int id;  // Add ID field
     private LocalDate date;
     private String description;
     private BigDecimal amount;
@@ -14,8 +15,10 @@ public class Transaction {
         INCOME, EXPENSE
     }
 
-    public Transaction(LocalDate date, String description, BigDecimal amount,
+    // Add constructor with ID for database retrieval
+    public Transaction(int id, LocalDate date, String description, BigDecimal amount,
                        String category, TransactionType type) {
+        this.id = id;
         this.date = date;
         this.description = description;
         this.amount = amount;
@@ -23,16 +26,25 @@ public class Transaction {
         this.type = type;
     }
 
-    // Getters
+    // Keep existing constructor for new transactions
+    public Transaction(LocalDate date, String description, BigDecimal amount,
+                       String category, TransactionType type) {
+        this(-1, date, description, amount, category, type); // Use -1 for unsaved transactions
+    }
+
+
+
+    // Existing getters
     public LocalDate getDate() { return date; }
     public String getDescription() { return description; }
     public BigDecimal getAmount() { return amount; }
     public String getCategory() { return category; }
     public TransactionType getType() { return type; }
+    public int getId() { return id; }
 
     @Override
     public String toString() {
-        return String.format("\n%s | %-20s | %-8s | %-10s | %s",
-                date, description, amount, category, type);
+        return String.format("\n%d | %s | %-20s | %-8s | %-10s | %s",
+                id, date, description, amount, category, type);
     }
 }

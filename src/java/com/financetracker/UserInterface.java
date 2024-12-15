@@ -1,17 +1,21 @@
-package financeTracker;
+package com.financetracker;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserInterface {
-
     private final Scanner scanner;
     private final TransactionManager transactionManager;
 
     public UserInterface() {
         scanner = new Scanner(System.in);
         transactionManager = new TransactionManager();
+    }
+
+    public UserInterface(TransactionManager transactionManager) {
+        this.scanner = new Scanner(System.in);  // Added this line
+        this.transactionManager = transactionManager;
     }
 
     public void displayMenu() {

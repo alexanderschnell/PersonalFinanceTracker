@@ -1,4 +1,4 @@
-package financeTracker;
+package com.financetracker;
 
 import java.math.BigDecimal;
 
