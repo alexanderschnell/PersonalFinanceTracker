@@ -84,8 +84,8 @@ public class UserInterface {
 
         System.out.println("\nAll Transactions");
         System.out.println("----------------");
-        for (Transaction t : transactions) {
-            System.out.println(t);
+        for (Transaction transaction : transactions) {
+            System.out.println(transaction);
         }
     }
 
